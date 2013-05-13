@@ -28,8 +28,16 @@ import string
 #   this means it may contain words with apostrophes or hyphens
 stopwords = Set()
 
-stopwordsfiles = [open('.\data\stopwords\stopwords1.txt', 'r'), open('.\data\stopwords\stopwords2.txt', 'r'), open('.\data\stopwords\stopwords3.txt', 'r'),
-open('.\data\stopwords\stopwords4.txt', 'r'), open('.\data\stopwords\stopwords5.txt', 'r')]
+#LINUX
+#stopwordsfiles = [open('.\data\stopwords\stopwords1.txt', 'r'), open('.\data\stopwords\stopwords2.txt', 'r'), open('.\data\stopwords\stopwords3.txt', 'r'),
+#open('.\data\stopwords\stopwords4.txt', 'r'), open('.\data\stopwords\stopwords5.txt', 'r')]
+
+#Shitty Fix for Windows
+stopwordsfiles = [open('C:\Users\Dhrumil\Documents\GitHub\PoliticalFraming\data\stopwords\stopwords1.txt', 'r'), 
+open('C:\Users\Dhrumil\Documents\GitHub\PoliticalFraming\data\stopwords\stopwords2.txt', 'r'), 
+open('C:\Users\Dhrumil\Documents\GitHub\PoliticalFraming\data\stopwords\stopwords3.txt', 'r'),
+open('C:\Users\Dhrumil\Documents\GitHub\PoliticalFraming\data\stopwords\stopwords4.txt', 'r'), 
+open('C:\Users\Dhrumil\Documents\GitHub\PoliticalFraming\data\stopwords\stopwords5.txt', 'r')]
 
 for myfile in stopwordsfiles:
     for word in myfile.readlines():
