@@ -4,8 +4,9 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 import numpy as np
 
-categories = ['education','health_care','immigration','marriage','middle_east']
-training_set = load_files('training',categories=categories,shuffle=True)
+#categories = ['education','health_care','immigration','marriage','middle_east']
+categories = ['D','R']
+training_set = load_files('/home/dhrumil/Desktop/PoliticalFraming/data/training/immigration',categories=categories,shuffle=True)
 
 count_vect = CountVectorizer()
 X_train_counts = count_vect.fit_transform(training_set.data)
@@ -15,10 +16,17 @@ X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
 
 clf = MultinomialNB(alpha=1.0,fit_prior=False).fit(X_train_tfidf,training_set.target)
 
-testing_set = load_files('testing',categories=categories,shuffle=True)
+testing_set = load_files('/home/dhrumil/Desktop/PoliticalFraming/data/testing',categories=categories,shuffle=True)
 docs_test = testing_set.data
-X_new_counts = count_vect.transform(docs_test)
-X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+#X_new_counts = count_vect.transform(docs_test)
+#X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+
+##
+from sklearn.feature_extraction.text import TfidfVectorizer
+vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5, stop_words='english')
+X_new_tfidf =  vectorizer.fit_transform(testing_set.data)
+##
+
 predicted = clf.predict(X_new_tfidf)
 predicted_logs = clf.predict_log_proba(X_new_tfidf)
 

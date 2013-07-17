@@ -10,7 +10,9 @@ frames = ['anglican papacy founded Saint welfare religious disciples uphold papi
 
 frame_order = ['christianity','crime','finance','sex','war','common_words']
 
-training_set = load_files('training',shuffle=True)
+categories = ['D','R']
+training_set = load_files('/home/dhrumil/Desktop/PoliticalFraming/data/training/immigration',categories=categories,shuffle=True)
+#training_set = load_files('training',shuffle=True)
 
 count_vect = CountVectorizer()
 X_train_counts = count_vect.fit_transform(training_set.data)
@@ -24,7 +26,7 @@ X_new_counts = count_vect.transform(frames)
 X_new_tfidf = tfidf_transformer.transform(X_new_counts)
 predicted_logs = clf.predict_log_proba(X_new_tfidf)
 
-f = open('speechFrames.txt','w')
+f = open('/home/dhrumil/Desktop/PoliticalFraming/data/speechFrames.txt','w')
 f.write('Frame Names and Order:\n'+str(frame_order)+'\n\n')
 #f.write('Frames:\n'+str(frames)+'\n\n')
 f.write('Training Set:\n'+str(training_set.target_names)+'\n\n')
