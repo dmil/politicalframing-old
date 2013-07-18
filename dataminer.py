@@ -6,7 +6,7 @@ import os
 import math
 
 def output_files(data, phrase, page_no):
-    #windows
+    #windows):
     #folder_path = os.path.dirname(__file__) + "\\data\\" + phrase
 
     #linux
@@ -19,13 +19,13 @@ def output_files(data, phrase, page_no):
         #windows
         #outputfile = open(folder_path + "\\\\" + str(count) + '.json', 'w')
         #linux
-        outputfile = open(folder_path + "/" + str(count) + '.json', 'w')
-        outputfile.write(json.dumps(result))
+        outputfile = open(folder_path + "/" + str(count) + '.json', 'wb')
+        json.dump(result,outputfile)
         outputfile.close()
         count = count + 1
 
 
-phrase = 'gay' #phrase to search for
+phrase = 'gun' #phrase to search for
 #print phrase outputfile#debug
 results_per_page = 1000 #number of results per page
 page_number = 1
