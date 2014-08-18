@@ -1,3 +1,6 @@
+# DEPRECATED - PLEASE SEE https://github.com/PoliticalFraming/politicalframing
+
+
 Name: Political Framing
 Description: A machine learning approach to studying rhetoric in the US congress.
 Author: Dhrumil Mehta
